@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../../../firebaseApp/firebaseConfig";
 import CommentDetailPage from "../../comment/CommentDetailPage";
+import HomePage from "../../../pages/HomePage";
 
 const PostDetailPage = () => {
   const { slug } = useParams();
@@ -53,7 +54,9 @@ const PostDetailPage = () => {
     }
     getData();
   }, [categoryId]);
+
   if (!slug) return <Page404></Page404>;
+  if (typeof post?.title === "undefined") return <HomePage></HomePage>;
   return (
     <Layout>
       <div className="main mb-[100px]">
@@ -62,7 +65,7 @@ const PostDetailPage = () => {
             url={post?.image}
             className="post-feature w-full max-w-[640px] h-[466px] rounded-[20px]"
           ></PostImage>
-          <div className="post-info flex-1">
+          <div className="flex-1 post-info">
             <PostCategory className="mb-6 bg-[#F3EDFF] inline-block">
               {post?.category.name}
             </PostCategory>
@@ -83,10 +86,10 @@ const PostDetailPage = () => {
               <img
                 src={post?.user.avatar}
                 alt="user avatar"
-                className="object-cover h-full w-full rounded-2xl"
+                className="object-cover w-full h-full rounded-2xl"
               />
             </div>
-            <div className="author-content flex-1 p-5">
+            <div className="flex-1 p-5 author-content">
               <h3 className="author-name font-bold mb-5 text-[20px]">
                 {post?.user.fullname}
               </h3>

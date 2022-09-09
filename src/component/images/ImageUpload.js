@@ -24,7 +24,7 @@ const ImageUpload = (props) => {
       {!image && (
         <div className="flex flex-col items-center text-center pointer-events-none">
           <img
-            src="/img-upload.png"
+            src="https://o.remove.bg/downloads/aace28ed-e486-4a25-ab68-45cd0b0febc6/img-upload-removebg-preview.png"
             alt="upload-img"
             className="max-w-[80px] mb-5"
           />
@@ -33,14 +33,14 @@ const ImageUpload = (props) => {
       )}
       {image && (
         <>
-          <img src={image} className="w-full h-full object-cover" alt="" />
+          <img src={image} className="object-cover w-full h-full" alt="" />
           <button
             className="h-16 w-16 flex items-center justify-center rounded-full absolute text-[#FF0000] bg-[#fff] invisible transition-all group-hover:visible"
             onClick={handleDeleteImage}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
