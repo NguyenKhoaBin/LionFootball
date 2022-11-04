@@ -3,8 +3,8 @@ import Button from "../button/Button";
 //from-[#B7F8DB] to-[#50A7C2]
 const HomeBanner = () => {
   return (
-    <div className="bg-gradient-to-br  from-[#414141] to-[#000000] min-h-[520px] ">
-      <div className="main h-full flex items-center py-[45px] pr-[80px] justify-between">
+    <div className="bg-[#88DC3B] bg-banner bg-cover min-h-[calc(100vh-92px)] ">
+      <div className="main h-full flex items-center pt-[200px] pr-[80px] justify-between">
         <div className="banner-content max-w-[500px] text-[#fff]">
           <h1 className="text-[38px] font-bold">Lion Football Blogs</h1>
           <p className="my-[25px] text-[18px]">
@@ -19,13 +19,13 @@ const HomeBanner = () => {
             Write new post
           </Button>
         </div>
-        <div className="banner-img ">
+        {/* <div className="banner-img ">
           <img
-            src="https://o.remove.bg/downloads/bd3f1139-3119-4c26-af64-2213b04d1c7c/banner_tran-removebg-preview.png"
+            src="https://thumbs.dreamstime.com/z/world-football-cup-realistic-d-soccer-ball-sport-poster-banner-flyer-modern-design-concept-font-231514598.jpg"
             alt=""
             className="object-cover min-w-[450px]"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -40,16 +40,16 @@ const Header = () => {
     signOut(auth);
   };
   return (
-    <div className="px-[89.6px] py-[15px] sticky z-50 top-0 bg-[#fff]">
+    <div className="p-3  lg:px-[89.6px] lg:py-[15px] sticky z-50 top-0 bg-[#fff]">
       <div className="flex items-center header ">
         <NavLink to={"/"}>
           <img
-            src="https://o.remove.bg/downloads/54af4348-a2f9-47c2-b154-d0cf47e8e23e/football_tran-removebg-preview.png"
+            src="https://github.com/NguyenKhoaBin/LionFootball/blob/gh-pages/football_tran.png?raw=true"
             alt=""
             className="block w-[75px] rounded-full"
           />
         </NavLink>
-        <ul className="menu flex items-center gap-[20px] ml-[60px]">
+        <ul className="menu flex items-center gap-[20px] ml-[60px] ">
           {menuLinks.map((item) => (
             <li key={item.title} className="text-[18px] font-[500]">
               <NavLink to={item.url}> {item.title}</NavLink>

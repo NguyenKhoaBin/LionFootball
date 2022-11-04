@@ -11,10 +11,11 @@ const PostItem = ({
   url = "",
   time = "",
   category = "",
+  className = "",
 }) => {
   const date = new Date(time?.seconds * 1000).toLocaleDateString("vi-VI");
   return (
-    <div className="flex flex-col items-start">
+    <div className={`flex flex-col items-start ${className}`}>
       <div className="post-image h-[202px] mb-5 block w-full">
         <PostImage url={url} to={slug} alt="unplash"></PostImage>
       </div>

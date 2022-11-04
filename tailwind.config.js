@@ -1,7 +1,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        banner:
+          "url('https://digitalhub.fifa.com/transform/d3c2deff-a4a2-4f7b-a5db-cfa68c5d980a/FWC2022_Qatar_100Days_Banner_00-1')",
+      },
+    },
     colors: {
       primary: "#2EBAC1",
       gray300: "#e5e5e5",

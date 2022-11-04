@@ -24,7 +24,7 @@ const ImageUpload = (props) => {
       {!image && (
         <div className="flex flex-col items-center text-center pointer-events-none">
           <img
-            src="https://o.remove.bg/downloads/aace28ed-e486-4a25-ab68-45cd0b0febc6/img-upload-removebg-preview.png"
+            src="https://github.com/NguyenKhoaBin/LionFootball/blob/main/public/img-upload.png?raw=true"
             alt="upload-img"
             className="max-w-[80px] mb-5"
           />

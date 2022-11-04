@@ -5,7 +5,7 @@ const Page404 = () => {
     <div className="flex items-center  flex-col mt-[100px] h-screen gap-8">
       <NavLink to={"/"}>
         <img
-          src="https://o.remove.bg/downloads/54af4348-a2f9-47c2-b154-d0cf47e8e23e/football_tran-removebg-preview.png"
+          src="https://github.com/NguyenKhoaBin/LionFootball/blob/gh-pages/football_tran.png?raw=true"
           alt="Lion football"
           className="h-[230px] mb-4 w-[250px]"
         />

@@ -1,4 +1,11 @@
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import {
+  collection,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../firebaseApp/firebaseConfig";
 import Heading from "../heading/Heading";
@@ -10,42 +17,62 @@ const HomeNewest = () => {
   const [postNewest, setPostNewest] = useState([]);
   useEffect(() => {
     const colref = collection(db, "posts");
-    const q = query(colref, where("status", "==", 1));
-    const qTranfer = query(colref, where("status", "==", 1));
-    onSnapshot(q, (snapShot) => {
-      const resultPostNewset = [];
-      snapShot.forEach((doc) => {
-        resultPostNewset.push({
-          id: doc.id,
-          ...doc.data(),
-        });
-      });
-      setPostNewest(resultPostNewset);
-    });
-    onSnapshot(qTranfer, (snapShot) => {
-      const resultPostTranfer = [];
-      snapShot.forEach((doc) => {
-        if (doc.data().category.name === "Tranfer") {
-          resultPostTranfer.push({
+
+    const fetchNew = async () => {
+      const q = await query(
+        colref,
+        limit(4),
+        // where("status", "==", 1),
+        orderBy("createdAt")
+      );
+      onSnapshot(q, async (snapShot) => {
+        const resultPostNewset = [];
+        await snapShot.forEach((doc) => {
+          resultPostNewset.push({
             id: doc.id,
             ...doc.data(),
           });
-        }
+        });
+        setPostNewest(resultPostNewset);
+        console.log(postNewest);
       });
+    };
+    fetchNew();
+    const fetchTranfer = async () => {
+      const qTranfer = await query(
+        colref,
 
-      setPostTranfer(resultPostTranfer);
-    });
+        where("status", "==", 1)
+      );
+      onSnapshot(qTranfer, (snapShot) => {
+        const resultPostTranfer = [];
+        snapShot.forEach((doc) => {
+          if (doc.data().category.name === "Tranfer") {
+            resultPostTranfer.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          }
+        });
+
+        setPostTranfer(resultPostTranfer);
+      });
+    };
+    fetchTranfer();
   }, []);
-  const postNewestClone = postNewest.slice(
-    postNewest.length - 5,
-    postNewest.length - 2
+  console.log(postNewest);
+  let postNewestClone = postNewest?.slice(
+    postNewest.length - 4,
+    postNewest.length - 1
   );
+  postNewestClone = postNewestClone.reverse();
   if (postTranfer.length <= 0) return null;
+  console.log(postNewestClone);
   return (
     <div className="home-block">
       <div className="main">
         <Heading>Mới nhất</Heading>
-        <div className="layout grid grid-cols-2 gap-10 mb-10 items-start">
+        <div className="grid items-start grid-cols-2 gap-10 mb-10 layout">
           <PostNewestLarge
             data={postNewest[postNewest.length - 1]}
           ></PostNewestLarge>
@@ -56,8 +83,9 @@ const HomeNewest = () => {
               ))}
           </div>
         </div>
+
         <Heading>Tin chuyển nhượng</Heading>
-        <div className="grid-layout grid-layout--primary">
+        <div className="p-5 grid-layout grid-layout--primary">
           {postTranfer.length > 0 &&
             postTranfer?.map((item) => (
               <PostItem

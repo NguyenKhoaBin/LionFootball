@@ -1,56 +1,88 @@
 import React from "react";
+import { FaFacebook } from "react-icons/fa";
+import {
+  AiOutlineInstagram,
+  AiOutlineTwitter,
+  AiOutlineGithub,
+} from "react-icons/ai";
+import { Link } from "react-router-dom";
+
 const socials = [
   {
     name: "facebook",
-    url: "https://cdn-icons-png.flaticon.com/128/20/20673.png",
+    icon: (
+      <FaFacebook className="h-7 opacity-[.3] w-7 cursor-pointer hover:scale-105" />
+    ),
   },
   {
     name: "instagram",
-    url: "https://cdn-icons-png.flaticon.com/128/1384/1384015.png",
+    icon: (
+      <AiOutlineInstagram className="h-7 opacity-[.3] w-7 cursor-pointer hover:scale-105" />
+    ),
   },
   {
     name: "twitter",
-    url: "https://cdn-icons-png.flaticon.com/128/2168/2168336.png",
+    icon: (
+      <AiOutlineTwitter className="h-7 opacity-[.3] w-7 cursor-pointer hover:scale-105" />
+    ),
+  },
+  {
+    name: "github",
+    icon: (
+      <AiOutlineGithub className="h-7 opacity-[.3] w-7 cursor-pointer hover:scale-105" />
+    ),
   },
 ];
+
+const quickLink = [
+  {
+    name: "Home",
+    to: "/",
+  },
+  {
+    name: "Profile",
+    to: "/userprofile",
+  },
+  {
+    name: "Contact",
+    to: "/contact",
+  },
+  {
+    name: "Write",
+    to: "/add-post",
+  },
+];
+
 const Footer = () => {
   return (
-    <div className="bg-gradient-to-br from-[#fdfbfb] to-[#ebedee] pt-10 pb-5 w-full">
-      <div className="flex items-center justify-center ">
-        <img
-          src="https://o.remove.bg/downloads/54af4348-a2f9-47c2-b154-d0cf47e8e23e/football_tran-removebg-preview.png"
-          alt="logo"
-          className="max-w-[75px] object-cover"
-        />
-        <h3 className="text-[28px]">Lion Football Blogs</h3>
-      </div>
-      <div className="flex items-center mb-10 justify-evenly">
-        <div className="flex flex-col items-center justify-center">
-          <p className="font-bold text-[20px]">Follow Us</p>
-          <div className="flex items-center gap-3 justify-evenly">
-            {socials.map((item) => (
-              <span key={item.url}>
-                <a href="https://www.facebook.com/nguyen.bin.796569">
-                  <img
-                    src={item.url}
-                    className="hover:cursor-pointer hover:translate-y-1 w-full max-w-[20px]"
-                    alt={item.name}
-                  />
-                </a>
+    <section className="bg-[#000] text-[#EEEEEE] text-[18px]">
+      <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <nav className="flex flex-wrap justify-center gap-4 -my-2">
+          {quickLink.map((item, i) => (
+            <Link to={item.to} key={i}>
+              <span className="font-[500] cursor-pointer hover:opacity-75">
+                {item.name}
               </span>
-            ))}
-          </div>
+            </Link>
+          ))}
+        </nav>
+        <div className="flex justify-center mt-8 space-x-6">
+          {socials.map((item, i) => (
+            <a
+              className=""
+              href="https://www.facebook.com/nguyen.bin.796569"
+              to={"https://www.facebook.com/nguyen.bin.796569"}
+              key={i}
+            >
+              {item.icon}
+            </a>
+          ))}
         </div>
-        <div className="items-center ">
-          <p className="font-bold text-[20px]">Call Us</p>
-          <span>0981808888</span>
-        </div>
+        <p className="mt-8 text-base leading-6 text-center text-gray-400">
+          © 2022 Nguyễn Khoa Bin. All rights reserved.
+        </p>
       </div>
-      <div className="mt-[10px] mb-[25px]  w-full  border-b border-b-[#333] "></div>
-      <p className="text-center">
-        Copyright © 2022 Nguyễn Khoa Bin / All rights reserved /Privacy
-      </p>
-    </div>
+    </section>
   );
 };
 

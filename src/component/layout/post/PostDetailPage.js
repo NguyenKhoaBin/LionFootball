@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Page404 from "../../../pages/Page404";
 import Heading from "../../heading/Heading";
 import Layout from "../Layout";
@@ -13,9 +13,9 @@ import { useEffect } from "react";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../../../firebaseApp/firebaseConfig";
 import CommentDetailPage from "../../comment/CommentDetailPage";
-import HomePage from "../../../pages/HomePage";
 
 const PostDetailPage = () => {
+  const navigate = useNavigate();
   const { slug } = useParams();
   const [post, setPost] = useState();
   const [postSame, setPostSame] = useState();
@@ -56,7 +56,7 @@ const PostDetailPage = () => {
   }, [categoryId]);
 
   if (!slug) return <Page404></Page404>;
-  if (typeof post?.title === "undefined") return <HomePage></HomePage>;
+  if (typeof post?.title === "undefined") return navigate("/");
   return (
     <Layout>
       <div className="main mb-[100px]">

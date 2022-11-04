@@ -95,6 +95,7 @@ const UserProfile = () => {
       const docRef = doc(db, "users", userId);
       await updateDoc(docRef, {
         ...values,
+        avatar: image,
         desc: values.desc,
       });
       toast.success("Update profile successfully!");
@@ -108,7 +109,7 @@ const UserProfile = () => {
         desc="Update your account information"
       ></DashboardHeading>
       <form onSubmit={handleSubmit(handleUpdateProfile)}>
-        <div className="text-center mb-10">
+        <div className="mb-10 text-center">
           <ImageUpload
             name="image"
             image={image}
@@ -170,7 +171,7 @@ const UserProfile = () => {
             ></Input>
           </Field>
         </div>
-        <div className="flex justify-center  mb-4">
+        <div className="flex justify-center mb-4">
           <Field className="w-full">
             <Label className="block font-[600] mb-3" htmlFor="desc">
               Description
